@@ -18,7 +18,7 @@ const Login = () => {
             />
             <input
               className="p-3 my-3 border border-slate-300 w-full outline-0 "
-              placeholder="password"
+              placeholder="Пароль"
               type={"password"}
             />
             <button className="p-3 mt-3 bg-indigo-600 text-white w-full">

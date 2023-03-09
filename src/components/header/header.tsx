@@ -14,7 +14,7 @@ const Header = () => {
               alt="Workflow"
               className="h-8 w-auto"
             />
-              <h1 className="text-2xl font-bold ml-2">Авиа Белогорье</h1>
+              <h1 className="text-2xl font-bold ml-2">Индекс Драйв</h1>
           </div>
           <div className="flex items-center">
             <NavLink to={'/login'} className="bg-indigo-600 text-white px-4 py-2 rounded-md mr-2">
