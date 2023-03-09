@@ -1,8 +1,22 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, redirect } from "react-router-dom";
 import Container from "../components/container";
+import { useAppDispatch } from "../hooks/hook";
+import { setUser } from "../store/slices/userSlice";
 
 const Login = () => {
+
+  const [username, setUsername] = useState<string>("");
+
+  const dispatch = useAppDispatch();
+
+  const handleAuth = async () => {
+    if (username.length > 0) {
+      dispatch(setUser(username));
+      return redirect("/find");
+    }
+  };
+
   return (
     <div>
       <Container>
@@ -13,8 +27,10 @@ const Login = () => {
             </h1>
             <input
               className="p-3 my-3 border border-slate-300 w-full outline-0 "
-              placeholder="example@gmail.com"
-              type={"mail"}
+              placeholder="Логин"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              type={"text"}
             />
             <input
               className="p-3 my-3 border border-slate-300 w-full outline-0 "

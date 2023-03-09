@@ -1,8 +1,22 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import Container from "../components/container";
+import { useAppDispatch, useAppSelector } from "../hooks/hook";
+import { setUser } from "../store/slices/userSlice";
 
 const Register = () => {
+  const [username, setUsername] = useState<string>("");
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleRegister = () => {
+    if (username.length > 0) {
+      dispatch(setUser(username));
+      navigate("/find")
+    }
+  };
+
   return (
     <div>
       <Container>
@@ -19,6 +33,8 @@ const Register = () => {
             <input
               className="p-3 my-3 border border-slate-300 w-full outline-0 "
               placeholder="Логин"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               type={"text"}
             />
             <input
@@ -36,14 +52,17 @@ const Register = () => {
               placeholder="Пароль"
               type={"password"}
             />
-            <button className="p-3 mt-3 bg-indigo-600 text-white w-full">
+            <button
+              onClick={() => handleRegister()}
+              className="p-3 mt-3 bg-indigo-600 text-white w-full"
+            >
               Создать аккаунт
             </button>
             <NavLink to={"/find"} className="text-sm mt-3 text-blue-500">
               Вернуться на главную
             </NavLink>
             <NavLink to={"/login"} className="text-sm mt-3 text-blue-500">
-              <span className="text-black">Уже есть аккаунт?</span>  Войдите
+              <span className="text-black">Уже есть аккаунт?</span> Войдите
             </NavLink>
           </div>
         </div>

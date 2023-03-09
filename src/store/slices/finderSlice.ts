@@ -2,14 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 // import type { RootState } from '../store'
 
 // Define a type for the slice state
-interface FinderState {
+interface IFinderState {
   brand: string,
   model: string,
   // ...
 }
 
 // Define the initial state using that type
-const initialState: FinderState = {
+const initialState: IFinderState = {
   brand: '',
   model: '',
 }

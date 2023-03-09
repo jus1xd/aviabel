@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import TicketCard from "../components/cards/ticketCard";
 import Container from "../components/container";
 import Finder from "../components/finder/finder";
@@ -19,30 +19,30 @@ const Find = () => {
   const data = [
     {
       id: 1,
-      brand: "Audi",
-      model: "RS6",
-      cost: 516999,
+      brand: "BMW",
+      model: "1 серии",
+      cost: 4699,
       img: "https://avatars.mds.yandex.net/get-autoru-vos/2147042/d3e88d3dd5626ff396b617cf1e195e53/1200x900n",
     },
     {
       id: 2,
       brand: "BMW",
       model: "M5",
-      cost: 516999,
+      cost: 38999,
       img: "https://avatars.mds.yandex.net/get-autoru-vos/1942044/40cb02d6d7e831303f0096d52feacd5e/1200x900n",
     },
     {
       id: 3,
       brand: "Mercedes",
       model: "S63",
-      cost: 516999,
+      cost: 25499,
       img: "https://yastatic.net/naydex/autoru/F26T0Kr86/c1e881DEc/hwRMd85aXO4Axctmw3GSrKVUWQR6Y46ZijfXwCz_Nqcv4sf1BVLmvlqCnInwbh6wVzVaUWy55M_R8IXEkNhVfcdRLW6bW1HHfYDHAq44l_n4dCFdC3PyvWKaZ0DwU7Yn3ko7cUw7_8I_m5k4UFMXXNv924wNocHGFTXl0RRtTLgXYPj3LhbdaiiVwuqb-W4c0WmFgHoKLiUyYosAXINW09Yev2WYs5PzU1eFFHkLS0jH8Vu8hWnZzhnhVUUMcUjgC3T4",
     },
     {
       id: 4,
       brand: "ВАЗ",
       model: "21115",
-      cost: 219999,
+      cost: 1499,
       img: "https://yastatic.net/naydex/autoru/F26T0Kr86/c1e881DEc/hwRMd85aXO4Axctmw3GSrKVUWQR6Y46ZijfXwCz_Nqcv4sf1BVLqmlaajJX8b06kVnQWUDi8rMvUoJHYoMRZdJtNBWaTQ3CCMNziU8d4l_n4dCFdC3PyvWKaZ0DwU7Yn3ko7cUw7_8I_m5k4UFMXXNv924wNocHGFTXl0RRtTLgXYPj3LhbdaiiVwuqb-W4c0WmFgHoKLiUyYosAXINW09Yev2WYs5PzU1eFFHkLS0jH8Vu8hWnZzhnhVUUMcUjgC3T4",
     },
   ];

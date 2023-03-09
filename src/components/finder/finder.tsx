@@ -1,7 +1,6 @@
 import React, {useEffect,useState} from "react";
 import { useAppDispatch } from "../../hooks/hook";
 import { finderBrandValue, finderModelValue } from "../../store/slices/finderSlice";
-import Container from "../container";
 
 const Finder = () => {
 
@@ -12,11 +11,11 @@ const Finder = () => {
 
   useEffect(() => {
     dispatch(finderBrandValue(brand));
-  }, [brand]);
+  }, [brand, dispatch]);
 
   useEffect(() => {
     dispatch(finderModelValue(model));
-  }, [model]);
+  }, [model, dispatch]);
 
   return (
     <div className="my-6">

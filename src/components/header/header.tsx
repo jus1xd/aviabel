@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from "../../hooks/hook";
 import Container from "../container";
 
 const Header = () => {
+  const username = useAppSelector((state) => state.user.username);
+
   return (
     <header>
       <Container>
@@ -14,16 +17,26 @@ const Header = () => {
               alt="Workflow"
               className="h-8 w-auto"
             />
-              <h1 className="text-2xl font-bold ml-2">Индекс Драйв</h1>
+            <h1 className="text-2xl font-bold ml-2">Индекс Драйв</h1>
           </div>
-          <div className="flex items-center">
-            <NavLink to={'/login'} className="bg-indigo-600 text-white px-4 py-2 rounded-md mr-2">
-              Войти
-            </NavLink>
-            <NavLink to={'/register'} className="bg-white text-indigo-600 px-4 py-2 rounded-md border border-indigo-600">
-              Регистрация
-            </NavLink>
-          </div>
+          {username ? (
+            <div className="text-indigo-600">Привет, {username}</div>
+          ) : (
+            <div className="flex items-center">
+              <NavLink
+                to={"/login"}
+                className="bg-indigo-600 text-white px-4 py-2 rounded-md mr-2"
+              >
+                Войти
+              </NavLink>
+              <NavLink
+                to={"/register"}
+                className="bg-white text-indigo-600 px-4 py-2 rounded-md border border-indigo-600"
+              >
+                Регистрация
+              </NavLink>
+            </div>
+          )}
         </div>
       </Container>
     </header>
