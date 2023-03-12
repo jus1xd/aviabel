@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-import { NavLink, redirect } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Container from "../components/container";
 import { useAppDispatch } from "../hooks/hook";
-import { setUser } from "../store/slices/userSlice";
+import { login } from "../store/slices/userSlice";
 
 const Login = () => {
 
-  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const handleAuth = async () => {
-    if (username.length > 0) {
-      dispatch(setUser(username));
-      return redirect("/find");
+  const handleAuth = () => {
+    if (email.length > 4 && password.length > 8) {
+      dispatch(login({email, password}));
+      navigate("/find");
     }
   };
 
@@ -26,18 +28,20 @@ const Login = () => {
               Войти в аккаунт
             </h1>
             <input
-              className="p-3 my-3 border border-slate-300 w-full outline-0 "
-              placeholder="Логин"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              className="p-3 my-3 border rounded-lg border-slate-300 w-full outline-0 "
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               type={"text"}
             />
             <input
-              className="p-3 my-3 border border-slate-300 w-full outline-0 "
+              className="p-3 my-3 border rounded-lg border-slate-300 w-full outline-0 "
               placeholder="Пароль"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               type={"password"}
             />
-            <button className="p-3 mt-3 bg-indigo-600 text-white w-full">
+            <button onClick={() => handleAuth()} className="p-3 mt-3 rounded-lg bg-indigo-600 text-white w-full">
               Войти
             </button>
             <NavLink to={"/find"} className="text-sm mt-3 text-blue-500">

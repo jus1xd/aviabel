@@ -1,15 +1,17 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 type TProps = {
+  id: number;
   brand: string;
   model: string;
   cost: number;
   img: string;
 };
 
-const TicketCard: React.FC<TProps> = ({ brand, model, cost, img }) => {
+const TicketCard: React.FC<TProps> = ({ id, brand, model, cost, img }) => {
   return (
-    <div className="max-w-1/4 w-6/7 bg-slate-700 relative rounded-md overflow-hidden">
+    <div className="w-[272.5px] mr-[20px] mb-6 bg-slate-700 relative rounded-md overflow-hidden">
       <div className="">
         <img className="h-[200px] scale-110" src={img} alt="" />
       </div>
@@ -19,9 +21,11 @@ const TicketCard: React.FC<TProps> = ({ brand, model, cost, img }) => {
         </div>
         <div className="text-lg mb-2 ml-3 text-white">{cost} руб. / сутки</div>
         <div className="">
-          <button className="mt-3 w-full bg-indigo-600 text-white p-3">
-            Забронировать
-          </button>
+          <NavLink to={`/product/${id}`}>
+            <button className="mt-3 w-full bg-indigo-600 text-white p-3">
+              Забронировать
+            </button>
+          </NavLink>
         </div>
       </div>
     </div>

@@ -1,18 +1,22 @@
 import React, { useState } from "react";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Container from "../components/container";
-import { useAppDispatch, useAppSelector } from "../hooks/hook";
-import { setUser } from "../store/slices/userSlice";
+import { useAppDispatch } from "../hooks/hook";
+import { register } from "../store/slices/userSlice";
 
 const Register = () => {
+  const [email, setEmail] = useState<string>("");
   const [username, setUsername] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [surname, setSurname] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleRegister = () => {
-    if (username.length > 0) {
-      dispatch(setUser(username));
+    if (username.length > 0 && password.length > 0 && email.length > 0 && name.length > 0 && surname.length > 0) {
+      dispatch(register({username, password, email, name, surname}));
       navigate("/find")
     }
   };
@@ -26,35 +30,43 @@ const Register = () => {
               Зарегистрироваться
             </h1>
             <input
-              className="p-3 my-3 border border-slate-300 w-full outline-0 "
+              className="p-3 my-3 border border-slate-300 rounded-lg w-full outline-0 "
               placeholder="Почта"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               type={"mail"}
             />
             <input
-              className="p-3 my-3 border border-slate-300 w-full outline-0 "
+              className="p-3 my-3 border border-slate-300 rounded-lg w-full outline-0 "
               placeholder="Логин"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               type={"text"}
             />
             <input
-              className="p-3 my-3 border border-slate-300 w-full outline-0 "
+              className="p-3 my-3 border border-slate-300 rounded-lg w-full outline-0 "
               placeholder="Имя"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               type={"text"}
             />
             <input
-              className="p-3 my-3 border border-slate-300 w-full outline-0 "
+              className="p-3 my-3 border border-slate-300 rounded-lg w-full outline-0 "
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
               placeholder="Фамилия"
               type={"text"}
             />
             <input
-              className="p-3 my-3 border border-slate-300 w-full outline-0 "
+              className="p-3 my-3 border border-slate-300 rounded-lg w-full outline-0 "
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Пароль"
               type={"password"}
             />
             <button
               onClick={() => handleRegister()}
-              className="p-3 mt-3 bg-indigo-600 text-white w-full"
+              className="p-3 mt-3 rounded-lg bg-indigo-600 text-white w-full"
             >
               Создать аккаунт
             </button>
